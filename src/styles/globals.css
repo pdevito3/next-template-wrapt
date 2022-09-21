@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#__next {
+  min-height: 100%;
+}
+
+@layer components {
+  .h1 {
+    @apply text-2xl font-medium tracking-tight font-display text-slate-900 dark:text-gray-50 sm:text-4xl
+  }
+
+  .h2 {
+    @apply text-xl font-medium tracking-tight font-display text-slate-900 dark:text-gray-50 sm:text-3xl
+  }
+
+  .h3 {
+    @apply text-lg font-medium tracking-tight font-display text-slate-900 dark:text-gray-50 sm:text-2xl
+  }
+
+
+  /* Mantine */
+  .input-root {
+    @apply w-full
+  }
+  .input {
+    @apply block w-full p-2 text-sm rounded-md outline-none font-sans
+  }
+  .input-valid {
+    @apply text-slate-900 bg-slate-50 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 border-slate-300 focus:border-violet-500 focus:ring-violet-500 dark:focus:border-violet-500 dark:focus:ring-violet-500 dark:border-slate-600 border
+  }
+  .input-invalid {
+    @apply text-slate-900 bg-slate-50 dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 border-red-400 border focus:border-red-400 focus:ring-red-400 dark:focus:border-red-400 dark:focus:ring-red-400 focus:ring-1
+  }
+  .input-disabled {
+    @apply cursor-not-allowed border bg-slate-200/60 text-slate-300 dark:bg-slate-700 dark:text-slate-50
+  }
+  .input-dropdown {
+    @apply py-1 bg-slate-50 border border-slate-300 text-slate-500 text-sm rounded-r-lg border-l-slate-100 dark:border-l-slate-700 border-l-2 focus:ring-violet-500 focus:border-violet-500 block dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500
+  }
+  .input-items-wrapper {
+    @apply p-0 text-sm text-slate-700 dark:text-slate-200 w-full
+  }
+  .input-item {
+    @apply py-2 w-full text-sm transition-colors duration-100 ease-in
+  }
+  .form-label {
+    @apply text-slate-900 dark:text-white pb-1 font-sans
+  }
+  .form-error {
+    @apply text-sm -mt-1
+  }
+  .text-error {
+    @apply text-red-400
+  }
+}
