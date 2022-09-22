@@ -5,6 +5,7 @@ export const env = {
   auth: {
     nextAuthId: "oidc",
     secret: process.env.NEXTAUTH_SECRET,
+    authority: process.env.AUTH_AUTHORITY,
   },
   clientUrls: {
     recipeManagement: () => {
@@ -16,9 +17,11 @@ export const env = {
       }
     },
     authServer: () => {
+      if (!env.auth.authority) throw "No authority provided";
+
       switch (_env) {
         case "development":
-          return "http://localhost:3255/auth/realms/DevRealm";
+          return env.auth.authority;
         default:
           throw "Environment variable not set for 'authServer'";
       }

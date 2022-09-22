@@ -2,6 +2,7 @@ import { env } from "@/config";
 import { clients } from "@/lib/axios";
 import NextAuth, { NextAuthOptions, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
+import path from "path";
 import querystring from "query-string";
 
 // For more information on each option (and a full list of options) go to
@@ -13,7 +14,10 @@ export const authOptions: NextAuthOptions = {
       id: env.auth.nextAuthId,
       name: "OIDC",
       type: "oauth",
-      wellKnown: `${env.clientUrls.authServer()}/.well-known/openid-configuration`,
+      wellKnown: path.join(
+        env.auth.authority ?? "",
+        `/.well-known/openid-configuration`
+      ),
       authorization: {
         params: { scope: "openid email profile recipe_management" },
       },
@@ -127,7 +131,11 @@ async function refreshAccessToken(token: JWT) {
     } as {
       [key: string]: string;
     };
-    const url = env.clientUrls.authServer() + "/protocol/openid-connect/token";
+
+    const url = path.join(
+      env.auth.authority ?? "",
+      "/protocol/openid-connect/token"
+    );
 
     const response = await fetch(url, {
       headers: {
