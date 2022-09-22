@@ -17,8 +17,6 @@ export const env = {
       }
     },
     authServer: () => {
-      if (!env.auth.authority) throw "No authority provided";
-
       switch (_env) {
         case "development":
           return env.auth.authority;
