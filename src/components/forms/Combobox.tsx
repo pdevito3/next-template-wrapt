@@ -4,8 +4,6 @@ import { createStyles, Select, SelectProps } from "@mantine/core";
 import { IconAlertCircle, IconCheck, IconChevronDown } from "@tabler/icons";
 import clsx from "clsx";
 import { forwardRef } from "react";
-import { useTailwindColors } from "../../hooks/useTailwindConfig";
-import { useSetting } from "../ThemeToggle";
 
 interface ComboBoxProps extends SelectProps {
   testSelector: string;
@@ -14,47 +12,7 @@ interface ComboBoxProps extends SelectProps {
 
 const ComboBox = forwardRef<HTMLInputElement, ComboBoxProps>(
   ({ testSelector, errorSrOnly, ...rest }, ref) => {
-    const themeSetting = useSetting((state) => state.setting);
-    const twColors = useTailwindColors();
-    const useStyles = createStyles({
-      // TODO abstract out
-      item: {
-        // color:
-        //   themeSetting === "dark"
-        //     ? twColors?.slate["400"]
-        //     : twColors?.slate["700"],
-        // "&[data-hovered]": {
-        //   color:
-        //     themeSetting === "dark"
-        //       ? twColors?.slate["100"]
-        //       : twColors?.slate["600"],
-        //   backgroundColor:
-        //     themeSetting === "dark"
-        //       ? twColors?.slate["600"]
-        //       : twColors?.slate["200"],
-        // },
-        // "&[data-selected]": {
-        //   color:
-        //     themeSetting === "dark"
-        //       ? twColors?.violet["100"]
-        //       : twColors?.violet["600"],
-        //   backgroundColor:
-        //     themeSetting === "dark"
-        //       ? twColors?.violet["600"]
-        //       : twColors?.violet["200"],
-        // },
-        // "&[data-selected]&:hover": {
-        //   color:
-        //     themeSetting === "dark"
-        //       ? twColors?.slate["100"]
-        //       : twColors?.slate["600"],
-        //   backgroundColor:
-        //     themeSetting === "dark"
-        //       ? twColors?.slate["600"]
-        //       : twColors?.slate["200"],
-        // },
-      },
-    });
+    const useStyles = createStyles({});
     const { classes, cx } = useStyles();
     const { error, disabled, value, clearable } = rest;
 
@@ -150,7 +108,7 @@ const ComboBox = forwardRef<HTMLInputElement, ComboBoxProps>(
           dropdown: cx("input-dropdown"),
           itemsWrapper: cx("input-items-wrapper"),
           wrapper: cx(clsx(errorSrOnly && "mb-0")),
-          item: cx(clsx(classes.item, "input-item")),
+          item: cx(clsx("input-item")),
           rightSection: cx(clsx(!showClearable && "pointer-events-none")),
         }}
         rightSection={

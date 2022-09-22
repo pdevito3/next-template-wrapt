@@ -22,44 +22,6 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
     const themeSetting = useSetting((state) => state.setting);
     const twColors = useTailwindColors();
     const useStyles = createStyles({
-      // TODO abstract out
-      item: {
-        // color:
-        //   themeSetting === "dark"
-        //     ? twColors?.slate["400"]
-        //     : twColors?.slate["700"],
-        // "&[data-hovered]": {
-        //   color:
-        //     themeSetting === "dark"
-        //       ? twColors?.slate["100"]
-        //       : twColors?.slate["600"],
-        //   backgroundColor:
-        //     themeSetting === "dark"
-        //       ? twColors?.slate["600"]
-        //       : twColors?.slate["200"],
-        // },
-        // "&[data-selected]": {
-        //   color:
-        //     themeSetting === "dark"
-        //       ? twColors?.violet["100"]
-        //       : twColors?.violet["600"],
-        //   backgroundColor:
-        //     themeSetting === "dark"
-        //       ? twColors?.violet["600"]
-        //       : twColors?.violet["200"],
-        // },
-        // "&[data-selected]&:hover": {
-        //   color:
-        //     themeSetting === "dark"
-        //       ? twColors?.slate["100"]
-        //       : twColors?.slate["600"],
-        //   backgroundColor:
-        //     themeSetting === "dark"
-        //       ? twColors?.slate["600"]
-        //       : twColors?.slate["200"],
-        // },
-      },
-
       // is date outside given month
       outside: {
         color:

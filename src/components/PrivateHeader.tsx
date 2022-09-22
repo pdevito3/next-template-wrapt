@@ -44,7 +44,6 @@ function PrivateHeader() {
                 <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800">
                   <Menu.Item>
                     {({ active }) => (
-                      // TODO change to button that calls logout in store. logs you out, marks 'isLoggedIn' to false, and redirects to login page
                       <button
                         onClick={() => signOut()}
                         className={clsx(

@@ -45,7 +45,7 @@ module.exports = {
     plugin(function({ addVariant }) {
       addVariant('data-active', '&[data-active]')
       addVariant('data-selected', '&[data-selected]')
-      addVariant('data-hovered', '&[data-active]')
+      addVariant('data-hovered', '&[data-hovered]')
       addVariant('disabled', '&:disabled')
     })
   ],

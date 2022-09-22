@@ -302,20 +302,6 @@ function PaginationControls({
           </span>
         </span>
 
-        {/* <span className="flex items-center gap-1">
-              Go to page:
-              <input
-                  type="number"
-                  // defaultValue={apiPagination?.pageNumber ? apiPagination?.pageNumber : 1}
-                  onChange={(e) => {
-                      const page = e.target.value ? Number(e.target.value) : 1;
-                      setPageNumber(page);
-                  }}
-                  value={pageNumber}
-                  className="w-16 p-1 border rounded"
-              />
-          </span> */}
-
         <div className="w-32">
           <ComboBox
             aria-label={"page-size-selector"}
