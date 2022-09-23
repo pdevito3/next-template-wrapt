@@ -1,3 +1,4 @@
+import { useCanAccessSettings } from "@/domain/permissions";
 import logo from "@/images/logo.svg";
 import { Dialog, Transition } from "@headlessui/react";
 import {
@@ -13,17 +14,24 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
 
-const navigation = [
-  { name: "Home", href: "/", icon: IconHome },
-  /* route marker - remove if you don't want feature routes added by default */
-  { name: "Token Info", href: "/token", icon: IconLock },
-  { name: "Settings", href: "/settings", icon: IconSettings },
-];
-
 function PrivateSideNav() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const router = useRouter();
   const { pathname } = router;
+
+  let navigation = [
+    { name: "Home", href: "/", icon: IconHome },
+    /* route marker - remove if you don't want feature routes added by default */
+    { name: "Token Info", href: "/token", icon: IconLock },
+  ];
+
+  const canAccessSettings = useCanAccessSettings();
+  if (canAccessSettings)
+    navigation.push({
+      name: "Settings",
+      href: "/settings",
+      icon: IconSettings,
+    });
 
   useEffect(() => {
     setSidebarOpen(false);
