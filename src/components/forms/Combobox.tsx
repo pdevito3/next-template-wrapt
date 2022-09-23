@@ -82,7 +82,7 @@ const ComboBox = forwardRef<HTMLInputElement, ComboBoxProps>(
       }
     );
     SelectItem.displayName = "SelectItem";
-    console.log(inputState);
+
     return (
       <Select
         ref={ref}

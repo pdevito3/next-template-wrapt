@@ -75,7 +75,7 @@ export function useAutosave({
   // const [state, send] = useMachine(configuredAutosaveMachine);
 
   const autosaveService = interpret(configuredAutosaveMachine)
-    .onTransition((state) => console.log(state.value))
+    // .onTransition((state) => console.log(state.value))
     .start();
 
   useEffect(() => {
