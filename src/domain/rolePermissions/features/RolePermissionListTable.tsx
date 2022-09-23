@@ -5,6 +5,7 @@ import {
 } from "@/components/forms";
 import useDeleteModal from "@/components/modal/ConfirmDeleteModal";
 import { Notifications } from "@/components/notifications";
+import { useHasPermission } from "@/domain/permissions";
 import {
   RolePermissionDto,
   useDeleteRolePermission,
@@ -21,6 +22,7 @@ export function RolePermissionListTable({
   queryFilter,
 }: RolePermissionListTableProps) {
   const { sorting, pageSize, pageNumber } = usePaginatedTableContext();
+  const canDeleteRolePermission = useHasPermission("CanDeleteRolePermission");
 
   const openDeleteModal = useDeleteModal();
   const deleteRolePermissionApi = useDeleteRolePermission();
@@ -63,14 +65,16 @@ export function RolePermissionListTable({
       meta: { thClassName: "w-10" },
       cell: (row) => (
         <div className="flex items-center justify-center w-full">
-          <TrashButton
-            onClick={(e) => {
-              openDeleteModal({
-                onConfirm: () => deleteRolePermission(row.getValue()),
-              });
-              e.stopPropagation();
-            }}
-          />
+          {canDeleteRolePermission && (
+            <TrashButton
+              onClick={(e) => {
+                openDeleteModal({
+                  onConfirm: () => deleteRolePermission(row.getValue()),
+                });
+                e.stopPropagation();
+              }}
+            />
+          )}
         </div>
       ),
       header: () => <span className=""></span>,
