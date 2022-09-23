@@ -1,1 +1,2 @@
-export * from "./getPermissions";
+export * from "./getCurrentUserPermissions";
+export * from "./getPermissionsList";
