@@ -5,9 +5,10 @@ import {
 } from "@/components/forms";
 import useDeleteModal from "@/components/modal/ConfirmDeleteModal";
 import { Notifications } from "@/components/notifications";
+import { useHasPermission } from "@/domain/permissions";
 import { useDeleteUser, UserDto, useUsers } from "@/domain/users";
 import "@tanstack/react-table";
-import { createColumnHelper, SortingState } from "@tanstack/react-table";
+import { createColumnHelper, Row, SortingState } from "@tanstack/react-table";
 import { useRouter } from "next/router";
 
 interface UserListTableProps {
@@ -17,6 +18,12 @@ interface UserListTableProps {
 export function UserListTable({ queryFilter }: UserListTableProps) {
   const router = useRouter();
   const { sorting, pageSize, pageNumber } = usePaginatedTableContext();
+  const canUpdateUser = useHasPermission("CanUpdateUser");
+  const canDeleteUser = useHasPermission("CanDeleteUser");
+
+  const onRowClick = canUpdateUser
+    ? (row: Row<any>) => router.push(`/settings/users/${row.id}`)
+    : undefined;
 
   const openDeleteModal = useDeleteModal();
   const deleteUserApi = useDeleteUser();
@@ -75,14 +82,16 @@ export function UserListTable({ queryFilter }: UserListTableProps) {
       meta: { thClassName: "w-10" },
       cell: (row) => (
         <div className="flex items-center justify-center w-full">
-          <TrashButton
-            onClick={(e) => {
-              openDeleteModal({
-                onConfirm: () => deleteUser(row.getValue()),
-              });
-              e.stopPropagation();
-            }}
-          />
+          {canDeleteUser && (
+            <TrashButton
+              onClick={(e) => {
+                openDeleteModal({
+                  onConfirm: () => deleteUser(row.getValue()),
+                });
+                e.stopPropagation();
+              }}
+            />
+          )}
         </div>
       ),
       header: () => <span className=""></span>,
@@ -96,7 +105,7 @@ export function UserListTable({ queryFilter }: UserListTableProps) {
       apiPagination={UserPagination}
       entityPlural="Users"
       isLoading={isLoading}
-      onRowClick={(row) => router.push(`/settings/users/${row.id}`)}
+      onRowClick={onRowClick}
     />
   );
 }

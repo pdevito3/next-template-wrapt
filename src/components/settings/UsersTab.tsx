@@ -4,11 +4,13 @@ import {
   PaginatedTableProvider,
   useGlobalFilter,
 } from "@/components/forms";
+import { useHasPermission } from "@/domain/permissions";
 import { UserListTable } from "@/domain/users";
 import { IconCirclePlus } from "@tabler/icons";
 import "@tanstack/react-table";
 
 function UsersTab() {
+  const canAddUser = useHasPermission("CanAddUser");
   const { globalFilter, queryFilter, calculateAndSetQueryFilter } =
     useGlobalFilter(
       (value) => `(firstName|lastName|identifier|username)@=*${value}`
@@ -28,13 +30,14 @@ function UsersTab() {
                 placeholder="Search all columns..."
               />
             </div>
-
-            <Button
-              href="settings/users/new"
-              icon={<IconCirclePlus className="w-5 h-5" />}
-            >
-              Add User
-            </Button>
+            {canAddUser && (
+              <Button
+                href="settings/users/new"
+                icon={<IconCirclePlus className="w-5 h-5" />}
+              >
+                Add User
+              </Button>
+            )}
           </div>
 
           <div className="pt-2">
