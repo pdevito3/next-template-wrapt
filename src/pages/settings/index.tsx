@@ -3,10 +3,12 @@ import { RolePermissionsTab, UsersTab } from "@/components/settings";
 import { IconShieldLock, IconUser } from "@tabler/icons";
 import "@tanstack/react-table";
 import Head from "next/head";
+import { useState } from "react";
 import { PrivateLayout } from "../../components/PrivateLayout";
 
 Settings.isPublic = false;
 export default function Settings() {
+  const [activeTab, setActiveTab] = useState<string | null>("users");
   return (
     <>
       <Head>
@@ -20,27 +22,34 @@ export default function Settings() {
               Settings
             </h1>
 
-            <Tabs defaultValue="users">
-              <Tabs.List>
-                <Tabs.Tab value="users" icon={<IconUser className="w-5 h-5" />}>
-                  Users
-                </Tabs.Tab>
-                <Tabs.Tab
-                  value="rolepermissions"
-                  icon={<IconShieldLock className="w-5 h-5" />}
-                >
-                  Role Permissions
-                </Tabs.Tab>
-              </Tabs.List>
+            <div className="pt-6 sm:pt-3">
+              <Tabs value={activeTab} onTabChange={setActiveTab}>
+                <Tabs.List
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+                  tabs={[
+                    {
+                      value: "users",
+                      label: "Users",
+                      icon: <IconUser className="w-5 h-5" />,
+                    },
+                    {
+                      value: "rolepermissions",
+                      label: "Role Permissions",
+                      icon: <IconShieldLock className="w-5 h-5" />,
+                    },
+                  ]}
+                />
 
-              <Tabs.Panel value="users" className="pt-5">
-                <UsersTab />
-              </Tabs.Panel>
+                <Tabs.Panel value="users" className="pt-5">
+                  <UsersTab />
+                </Tabs.Panel>
 
-              <Tabs.Panel value="rolepermissions" className="pt-5">
-                <RolePermissionsTab />
-              </Tabs.Panel>
-            </Tabs>
+                <Tabs.Panel value="rolepermissions" className="pt-5">
+                  <RolePermissionsTab />
+                </Tabs.Panel>
+              </Tabs>
+            </div>
           </div>
         </div>
       </PrivateLayout>

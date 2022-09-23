@@ -1,10 +1,26 @@
+import { ComboBox } from "@/components/forms";
 import {
   createStyles,
   Tabs as MantineTabs,
   TabsProps as MantineTabsProps,
 } from "@mantine/core";
+import clsx from "clsx";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 
 interface TabsProps extends MantineTabsProps {}
+interface TabsListProps {
+  activeTab: string | null;
+  setActiveTab: Dispatch<SetStateAction<string | null>>;
+  tabs: Tab[];
+}
+
+interface Tab {
+  value: string;
+  label: string;
+  icon?: ReactNode;
+  rightSection?: ReactNode;
+}
+
 function Tabs({ ...rest }: TabsProps) {
   const useStyles = createStyles({});
   const { cx } = useStyles();
@@ -28,8 +44,44 @@ function Tabs({ ...rest }: TabsProps) {
   );
 }
 
-Tabs.List = MantineTabs.List;
-Tabs.Tab = MantineTabs.Tab;
+function TabsList({
+  tabs = [],
+  activeTab,
+  setActiveTab,
+  ...rest
+}: TabsListProps) {
+  return (
+    <>
+      <ComboBox
+        aria-label={"tab-selector"}
+        testSelector={"tab-selector"}
+        data={tabs.map((tab) => ({
+          value: tab.value,
+          label: tab.label,
+        }))}
+        value={activeTab}
+        onChange={(e) => setActiveTab(e)}
+        className="block w-full sm:hidden"
+      />
+
+      <MantineTabs.List {...rest} className={clsx("hidden sm:flex ")}>
+        {tabs.map((tab) => (
+          <MantineTabs.Tab
+            key={tab.value}
+            value={tab.value}
+            icon={tab.icon}
+            rightSection={tab.rightSection}
+          >
+            {tab.label}
+          </MantineTabs.Tab>
+        ))}
+      </MantineTabs.List>
+    </>
+  );
+}
+TabsList.displayName = "TabsList";
+
+Tabs.List = TabsList;
 Tabs.Panel = MantineTabs.Panel;
 
 export { Tabs };
