@@ -1,7 +1,7 @@
 import { PrivateLayout } from "@/components";
 import { Button } from "@/components/forms";
 import { useHasPermission } from "@/domain/permissions";
-import { RolesForm } from "@/domain/roles";
+import { AssignedRolesList, RolesForm } from "@/domain/roles";
 import { useGetUser, UserForm } from "@/domain/users";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -11,6 +11,7 @@ export default function EditUser() {
   const { userId } = router.query;
   const { data: userData } = useGetUser(userId?.toString() ?? "");
   const canUpdateUser = useHasPermission("CanUpdateUser");
+  const canAddUserRole = useHasPermission("CanAddUserRole");
 
   return (
     <>
@@ -33,7 +34,15 @@ export default function EditUser() {
 
                 <div className="pt-5 space-y-3 lg:pt-0">
                   <h2 className="h2">Manage Roles</h2>
-                  <RolesForm
+                  {canAddUserRole && (
+                    <RolesForm
+                      userId={userId?.toString() ?? ""}
+                      assignedRoles={userData?.roles}
+                    />
+                  )}
+
+                  <h3 className="h3">Assigned Roles</h3>
+                  <AssignedRolesList
                     userId={userId?.toString() ?? ""}
                     assignedRoles={userData?.roles}
                   />
