@@ -30,7 +30,7 @@ function UsersTab() {
                 placeholder="Search all columns..."
               />
             </div>
-            {canAddUser && (
+            {canAddUser.hasPermission && (
               <Button
                 href="settings/users/new"
                 icon={<IconCirclePlus className="w-5 h-5" />}

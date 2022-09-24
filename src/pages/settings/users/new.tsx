@@ -15,7 +15,7 @@ export default function NewUser() {
       </Head>
 
       <PrivateLayout>
-        {canAddUser ? (
+        {canAddUser.hasPermission ? (
           <div className="space-y-6">
             <div className="pt-4">
               <Button buttonStyle="secondary" href={"/settings"}>

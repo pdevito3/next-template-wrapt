@@ -36,35 +36,43 @@ export default function Settings() {
       </Head>
 
       <PrivateLayout>
-        {canAccessSettings ? (
-          <div className="space-y-6 max-w-9xl">
-            <div className="">
-              <h1 className="text-2xl font-medium tracking-tight font-display text-slate-900 dark:text-gray-50 sm:text-4xl">
-                Settings
-              </h1>
+        <>
+          {canAccessSettings.isLoading ? null : (
+            <>
+              {canAccessSettings.hasPermission ? (
+                <div className="space-y-6 max-w-9xl">
+                  <div className="">
+                    <h1 className="text-2xl font-medium tracking-tight font-display text-slate-900 dark:text-gray-50 sm:text-4xl">
+                      Settings
+                    </h1>
 
-              <div className="pt-6 sm:pt-3">
-                <Tabs value={activeTab} onTabChange={setActiveTab}>
-                  <Tabs.List
-                    activeTab={activeTab}
-                    setActiveTab={setActiveTab}
-                    tabs={tabs}
-                  />
+                    <div className="pt-6 sm:pt-3">
+                      <Tabs value={activeTab} onTabChange={setActiveTab}>
+                        <Tabs.List
+                          activeTab={activeTab}
+                          setActiveTab={setActiveTab}
+                          tabs={tabs}
+                        />
 
-                  <Tabs.Panel value="users" className="pt-5">
-                    {canReadUsers && <UsersTab />}
-                  </Tabs.Panel>
+                        <Tabs.Panel value="users" className="pt-5">
+                          {canReadUsers.hasPermission && <UsersTab />}
+                        </Tabs.Panel>
 
-                  <Tabs.Panel value="rolepermissions" className="pt-5">
-                    {canReadRolePermissions && <RolePermissionsTab />}
-                  </Tabs.Panel>
-                </Tabs>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <Forbidden />
-        )}
+                        <Tabs.Panel value="rolepermissions" className="pt-5">
+                          {canReadRolePermissions.hasPermission && (
+                            <RolePermissionsTab />
+                          )}
+                        </Tabs.Panel>
+                      </Tabs>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Forbidden />
+              )}
+            </>
+          )}
+        </>
       </PrivateLayout>
     </>
   );

@@ -21,7 +21,7 @@ export default function EditUser() {
       </Head>
 
       <PrivateLayout>
-        {canUpdateUser ? (
+        {canUpdateUser.hasPermission ? (
           <div className="space-y-6">
             <div className="pt-4">
               <Button buttonStyle="secondary" href={"/settings"}>
@@ -35,7 +35,7 @@ export default function EditUser() {
 
                 <div className="pt-5 space-y-3 lg:pt-0">
                   <h2 className="h2">Manage Roles</h2>
-                  {canAddUserRole && (
+                  {canAddUserRole.hasPermission && (
                     <RolesForm
                       userId={userId?.toString() ?? ""}
                       assignedRoles={userData?.roles}

@@ -36,7 +36,7 @@ function AssignedRolesList({ userId, assignedRoles }: AssignedRolesListProps) {
                   key={role}
                 >
                   <p className="flex-1 w-full select-none">{role}</p>
-                  {canRemoveUserRole && (
+                  {canRemoveUserRole.hasPermission && (
                     <div className="flex items-center justify-center">
                       <TrashButton
                         onClick={() => {

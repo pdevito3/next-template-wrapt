@@ -15,7 +15,7 @@ function RolePermissionsTab() {
   return (
     <>
       <div className="space-y-8">
-        {canAddRolePermission && (
+        {canAddRolePermission.hasPermission && (
           <div className="space-y-2">
             <h3 className="h3">Add a Role Permission</h3>
             <div className="hidden md:block">

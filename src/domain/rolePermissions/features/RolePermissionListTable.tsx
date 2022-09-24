@@ -22,7 +22,7 @@ export function RolePermissionListTable({
   queryFilter,
 }: RolePermissionListTableProps) {
   const { sorting, pageSize, pageNumber } = usePaginatedTableContext();
-  const canDeleteRolePermission = useHasPermission("CanDeleteRolePermission");
+  const canDeleteRolePermission = useHasPermission("CanDeleteRolePermissions");
 
   const openDeleteModal = useDeleteModal();
   const deleteRolePermissionApi = useDeleteRolePermission();
@@ -65,7 +65,7 @@ export function RolePermissionListTable({
       meta: { thClassName: "w-10" },
       cell: (row) => (
         <div className="flex items-center justify-center w-full">
-          {canDeleteRolePermission && (
+          {canDeleteRolePermission.hasPermission && (
             <TrashButton
               onClick={(e) => {
                 openDeleteModal({

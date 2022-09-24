@@ -21,7 +21,7 @@ export function UserListTable({ queryFilter }: UserListTableProps) {
   const canUpdateUser = useHasPermission("CanUpdateUsers");
   const canDeleteUser = useHasPermission("CanDeleteUsers");
 
-  const onRowClick = canUpdateUser
+  const onRowClick = canUpdateUser.hasPermission
     ? (row: Row<any>) => router.push(`/settings/users/${row.id}`)
     : undefined;
 
@@ -82,7 +82,7 @@ export function UserListTable({ queryFilter }: UserListTableProps) {
       meta: { thClassName: "w-10" },
       cell: (row) => (
         <div className="flex items-center justify-center w-full">
-          {canDeleteUser && (
+          {canDeleteUser.hasPermission && (
             <TrashButton
               onClick={(e) => {
                 openDeleteModal({

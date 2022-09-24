@@ -26,7 +26,7 @@ function PrivateSideNav() {
   ];
 
   const canAccessSettings = useCanAccessSettings();
-  if (canAccessSettings)
+  if (canAccessSettings.hasPermission)
     navigation.push({
       name: "Settings",
       href: "/settings",
