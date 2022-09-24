@@ -1,9 +1,6 @@
 export type Permission = typeof permissions[number];
 export const permissions = [
-  "CanDeleteRecipes",
-  "CanUpdateRecipes",
-  "CanAddRecipes",
-  "CanReadRecipes",
+  // permissions marker - do not delete if you want to use with craftsman
   "CanDeleteUsers",
   "CanUpdateUsers",
   "CanAddUsers",
