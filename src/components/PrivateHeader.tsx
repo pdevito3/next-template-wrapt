@@ -1,5 +1,5 @@
 import { ThemeToggle } from "@/components/ThemeToggle";
-import useAuthUser from "@/domain/auth/hooks/useAuthUser";
+import { useAuthUser } from "@/domain/auth";
 import { Menu, Transition } from "@headlessui/react";
 import { Avatar } from "@mantine/core";
 import clsx from "clsx";

@@ -2,7 +2,7 @@ import { env } from "@/config";
 import { signIn, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
-export default function useAuthUser() {
+export function useAuthUser() {
   const { data: session, status } = useSession();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);

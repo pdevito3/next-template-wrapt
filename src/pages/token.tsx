@@ -1,5 +1,5 @@
 import { PrivateLayout } from "@/components";
-import useAuthUser from "@/domain/auth/hooks/useAuthUser";
+import { useAuthUser } from "@/domain/auth";
 import Head from "next/head";
 
 // Protected.isPublic = false;

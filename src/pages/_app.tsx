@@ -1,6 +1,6 @@
 import { Notifications } from "@/components/notifications";
-import Login from "@/domain/auth/components/login";
-import useAuthUser from "@/domain/auth/hooks/useAuthUser";
+import { useAuthUser } from "@/domain/auth";
+import Login from "@/domain/auth/components/Login";
 import "@/styles/globals.css";
 import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
