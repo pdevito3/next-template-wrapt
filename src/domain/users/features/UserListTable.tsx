@@ -18,8 +18,8 @@ interface UserListTableProps {
 export function UserListTable({ queryFilter }: UserListTableProps) {
   const router = useRouter();
   const { sorting, pageSize, pageNumber } = usePaginatedTableContext();
-  const canUpdateUser = useHasPermission("CanUpdateUser");
-  const canDeleteUser = useHasPermission("CanDeleteUser");
+  const canUpdateUser = useHasPermission("CanUpdateUsers");
+  const canDeleteUser = useHasPermission("CanDeleteUsers");
 
   const onRowClick = canUpdateUser
     ? (row: Row<any>) => router.push(`/settings/users/${row.id}`)

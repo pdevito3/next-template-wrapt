@@ -5,7 +5,7 @@ import { UserForm } from "@/domain/users";
 import Head from "next/head";
 
 export default function NewUser() {
-  const canAddUser = useHasPermission("CanAddUser");
+  const canAddUser = useHasPermission("CanAddUsers");
 
   return (
     <>

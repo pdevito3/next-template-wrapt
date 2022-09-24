@@ -9,7 +9,7 @@ interface AssignedRolesListProps {
 }
 
 function AssignedRolesList({ userId, assignedRoles }: AssignedRolesListProps) {
-  const canRemoveUserRole = useHasPermission("CanRemoveUserRole");
+  const canRemoveUserRole = useHasPermission("CanRemoveUserRoles");
 
   const removeRoleApi = useRemoveUserRole();
   function removeRole(role: string) {

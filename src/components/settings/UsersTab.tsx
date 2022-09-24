@@ -10,7 +10,7 @@ import { IconCirclePlus } from "@tabler/icons";
 import "@tanstack/react-table";
 
 function UsersTab() {
-  const canAddUser = useHasPermission("CanAddUser");
+  const canAddUser = useHasPermission("CanAddUsers");
   const { globalFilter, queryFilter, calculateAndSetQueryFilter } =
     useGlobalFilter(
       (value) => `(firstName|lastName|identifier|username)@=*${value}`

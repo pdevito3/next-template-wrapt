@@ -10,8 +10,8 @@ export default function EditUser() {
   const router = useRouter();
   const { userId } = router.query;
   const { data: userData } = useGetUser(userId?.toString() ?? "");
-  const canUpdateUser = useHasPermission("CanUpdateUser");
-  const canAddUserRole = useHasPermission("CanAddUserRole");
+  const canUpdateUser = useHasPermission("CanUpdateUsers");
+  const canAddUserRole = useHasPermission("CanAddUserRoles");
 
   return (
     <>

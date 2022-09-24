@@ -8,7 +8,7 @@ import {
 import "@tanstack/react-table";
 
 function RolePermissionsTab() {
-  const canAddRolePermission = useHasPermission("CanAddRolePermission");
+  const canAddRolePermission = useHasPermission("CanAddRolePermissions");
   const { globalFilter, queryFilter, calculateAndSetQueryFilter } =
     useGlobalFilter((value) => `(role|permission)@=*${value}`);
 
