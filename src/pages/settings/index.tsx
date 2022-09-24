@@ -1,6 +1,7 @@
 import { PrivateLayout } from "@/components";
 import { Tabs } from "@/components/forms";
 import { RolePermissionsTab, UsersTab } from "@/components/settings";
+import { Forbidden } from "@/domain/auth";
 import { useCanAccessSettings, useHasPermission } from "@/domain/permissions";
 import { IconShieldLock, IconUser } from "@tabler/icons";
 import "@tanstack/react-table";
@@ -62,7 +63,7 @@ export default function Settings() {
             </div>
           </div>
         ) : (
-          <p>Forbidden</p>
+          <Forbidden />
         )}
       </PrivateLayout>
     </>

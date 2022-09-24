@@ -1,5 +1,6 @@
 import { PrivateLayout } from "@/components";
 import { Button } from "@/components/forms";
+import { Forbidden } from "@/domain/auth";
 import { useHasPermission } from "@/domain/permissions";
 import { AssignedRolesList, RolesForm } from "@/domain/roles";
 import { useGetUser, UserForm } from "@/domain/users";
@@ -51,7 +52,7 @@ export default function EditUser() {
             </div>
           </div>
         ) : (
-          <p>Forbidden</p>
+          <Forbidden />
         )}
       </PrivateLayout>
     </>

@@ -1,5 +1,5 @@
 function Forbidden() {
-  return <div>Forbidden</div>;
+  return <p>Forbidden</p>;
 }
 
 export { Forbidden };

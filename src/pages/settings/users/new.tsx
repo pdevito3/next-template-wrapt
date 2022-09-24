@@ -1,5 +1,6 @@
 import { PrivateLayout } from "@/components";
 import { Button } from "@/components/forms";
+import { Forbidden } from "@/domain/auth";
 import { useHasPermission } from "@/domain/permissions";
 import { UserForm } from "@/domain/users";
 import Head from "next/head";
@@ -29,7 +30,7 @@ export default function NewUser() {
             </div>
           </div>
         ) : (
-          <p>Forbidden</p>
+          <Forbidden />
         )}
       </PrivateLayout>
     </>
