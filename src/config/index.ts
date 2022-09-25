@@ -6,6 +6,7 @@ export const env = {
     nextAuthId: "oidc",
     secret: process.env.NEXTAUTH_SECRET,
     authority: process.env.AUTH_AUTHORITY,
+    clientId: process.env.AUTH_CLIENT_ID,
   },
   clientUrls: {
     recipeManagement: () => {

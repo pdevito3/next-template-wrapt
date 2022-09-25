@@ -23,7 +23,7 @@ export const authOptions: NextAuthOptions = {
       },
       idToken: true,
       checks: ["pkce", "state"],
-      clientId: "recipe_management.next",
+      clientId: env.auth.clientId,
       clientSecret: env.auth.secret,
       profile(profile) {
         return {
@@ -45,7 +45,7 @@ export const authOptions: NextAuthOptions = {
           querystring.stringify({
             refresh_token: refreshToken,
             client_secret: env.auth.secret,
-            client_id: "recipe_management.next",
+            client_id: env.auth.clientId,
           }),
           { headers }
         );
@@ -125,7 +125,7 @@ async function refreshAccessToken(token: JWT) {
   try {
     const params = {
       client_secret: env.auth.secret,
-      client_id: "recipe_management.next",
+      client_id: env.auth.clientId,
       grant_type: "refresh_token",
       refresh_token: token.refreshToken,
     } as {
