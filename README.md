@@ -12,9 +12,17 @@ This is a NextJS template meant to eliminate boilerplate for your apps. It is co
 
 ## Getting Started
 
-1. First, you'll want to set up your auth server so you can authenticate into the app. For an easy plug and play experience, this can be any OIDC compliant provider. Below is an example for keycloak.
+1. Clone the repository and install dependencies
 
-2. Update your `.env` file with a `NEXTAUTH_SECRET` and update `NEXTAUTH_URL` if needed (this should match your NextJS app url) `http://localhost:8582`.
+```shell
+git clone https://github.com/pdevito3/next-template-wrapt
+cd next-template-wrapt
+pnpm install
+```
+
+2. First, you'll want to set up your auth server so you can authenticate into the app. For an easy plug and play experience, this can be any OIDC compliant provider. Below is an example for keycloak.
+
+3. Update your `.env` file with a `NEXTAUTH_SECRET` and update `NEXTAUTH_URL` if needed (this should match your NextJS app url) `http://localhost:8582`.
 
    You'll also need to add your `AUTH_AUTHORITY` and `AUTH_CLIENT_ID` for the environment configuration to work properly. For example:
 
@@ -25,7 +33,7 @@ This is a NextJS template meant to eliminate boilerplate for your apps. It is co
    AUTH_CLIENT_ID=recipe_management.next
    ```
 
-3. If you want to use a separate api with your next app, you'll want to update `src/config/index` with an api client of your choice. For example, if i want to hit a recipe management api, my config might look like this:
+4. If you want to use a separate api with your next app, you'll want to update `src/config/index` with an api client of your choice. For example, if i want to hit a recipe management api, my config might look like this:
 
    ```ts
    const _env = process.env.NODE_ENV;
@@ -61,7 +69,7 @@ This is a NextJS template meant to eliminate boilerplate for your apps. It is co
    };
    ```
 
-4. And you'll need to register that client in the axios abstraction:
+5. And you'll need to register that client in the axios abstraction:
 
    ```tsx
    import { env } from "@/config";
