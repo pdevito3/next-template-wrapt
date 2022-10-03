@@ -14,11 +14,11 @@ This is a NextJS template meant to eliminate boilerplate for your apps. It is co
 
 1. Clone the repository and install dependencies
 
-```shell
-git clone https://github.com/pdevito3/next-template-wrapt myAppName
-cd myAppName
-pnpm install
-```
+   ```shell
+   git clone https://github.com/pdevito3/next-template-wrapt myAppName
+   cd myAppName
+   pnpm install
+   ```
 
 2. First, you'll want to set up your auth server so you can authenticate into the app. For an easy plug and play experience, this can be any OIDC compliant provider. Below is an example for keycloak.
 
@@ -33,7 +33,9 @@ pnpm install
    AUTH_CLIENT_ID=recipe_management.next
    ```
 
-4. If you want to use a separate api with your next app, you'll want to update `src/config/index` with an api client of your choice. For example, if i want to hit a recipe management api, my config might look like this:
+4. You can run your project with `pnpm dev`
+
+5. If you want to use a separate api with your next app, you'll want to update `src/config/index` with an api client of your choice. For example, if i want to hit a recipe management api, my config might look like this:
 
    ```ts
    const _env = process.env.NODE_ENV;
@@ -69,7 +71,7 @@ pnpm install
    };
    ```
 
-5. And you'll need to register that client in the axios abstraction:
+6. And you'll need to register that client in the axios abstraction:
 
    ```tsx
    import { env } from "@/config";
@@ -85,6 +87,7 @@ pnpm install
      // ...
    };
    ```
+
 
 ### Keycloak Example Setup
 
