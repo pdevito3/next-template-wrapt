@@ -15,8 +15,8 @@ This is a NextJS template meant to eliminate boilerplate for your apps. It is co
 1. Clone the repository and install dependencies
 
 ```shell
-git clone https://github.com/pdevito3/next-template-wrapt
-cd next-template-wrapt
+git clone https://github.com/pdevito3/next-template-wrapt myAppName
+cd myAppName
 pnpm install
 ```
 
