@@ -89,14 +89,14 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
         transitionTimingFunction="ease"
         firstDayOfWeek="sunday"
         icon={icon ?? <IconCalendar size={16} />}
-        excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6}
+        // excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6}
         dayClassName={(date, modifiers) =>
           cx({
             [classes.outside]: modifiers.outside,
             [classes.selected]: modifiers.selected,
             [classes.weekend]:
               modifiers.weekend && !modifiers.outside && !modifiers.selected,
-            [classes.disabled]: modifiers.disabled,
+            [classes.disabled]: modifiers.disabled && !modifiers.outside,
             [classes.today]:
               date.toLocaleDateString() ===
                 dayjs().toDate().toLocaleDateString() && !modifiers.selected,
