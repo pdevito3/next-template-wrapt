@@ -33,9 +33,9 @@ This is a NextJS template meant to eliminate boilerplate for your apps. It is co
    AUTH_CLIENT_ID=recipe_management.next
    ```
 
-4. You can run your project with `pnpm dev`
-
-5. If you want to use a separate api with your next app, you'll want to update `src/config/index` with an api client of your choice. For example, if i want to hit a recipe management api, my config might look like this:
+4. Update any scopes in your `...[nextauth]` file.
+5. You can run your project with `pnpm dev`
+6. If you want to use a separate api with your next app, you'll want to update `src/config/index` with an api client of your choice. For example, if i want to hit a recipe management api, my config might look like this:
 
    ```ts
    const _env = process.env.NODE_ENV;
