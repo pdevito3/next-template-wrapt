@@ -20,7 +20,16 @@ This is a NextJS template meant to eliminate boilerplate for your apps. It is co
    pnpm install
    ```
 
-2. First, you'll want to set up your auth server so you can authenticate into the app. For an easy plug and play experience, this can be any OIDC compliant provider. Below is an example for keycloak.
+2. Delete the `.git` directory, re-initialize the repository, and create an initial commit
+
+   ```shell
+   cd myAppName
+   rm -rf .git
+   git init
+   git add -A && git commit -m "Initial Commit"
+   ```
+   
+3. First, you'll want to set up your auth server so you can authenticate into the app. For an easy plug and play experience, this can be any OIDC compliant provider. Below is an example for keycloak.
 
 3. Update your `.env` file with a `NEXTAUTH_SECRET` and update `NEXTAUTH_URL` if needed (this should match your NextJS app url) `http://localhost:8582`.
 
